@@ -1,0 +1,70 @@
+{
+	"name": "EBANX-GoLang",
+	"build": {
+		"dockerfile": "Dockerfile",
+		"args": {
+			// Update the VARIANT arg to pick a version of Go: 1, 1.16, 1.15
+			"VARIANT": "1.16",
+			// Options
+			"INSTALL_NODE": "false",
+			"NODE_VERSION": "lts/*"
+		}
+	},
+	"runArgs": ["--name=EBANX-GoLang", "--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined" ],
+
+	// Set *default* container specific settings.json values on container create.
+	"settings": { 
+        "workbench.colorTheme": "Horizon",
+        "workbench.iconTheme": "Bearded Icons",
+		"go.toolsManagement.checkForUpdates": "local",
+		"go.gopath": "/go",
+		"go.useLanguageServer": true,
+        "go.languageServerExperimentalFeatures": {
+            "format": true,
+            "diagnostics": true,
+            "documentLink": true,
+        },
+        "[go]": {
+            "editor.codeActionsOnSave": {
+                "editor.formatOnSave": true,
+                "source.organizeImports": true,
+            }
+        },
+        "gopls": {
+            "completeUnimported": true,
+            "deepCompletion": true,
+		}
+	},
+	
+	// Add the IDs of extensions you want installed when the container is created.
+	"extensions": [
+		"golang.Go",
+		"budparr.language-hugo-vscode",
+		"github.copilot",
+		"jolaleye.horizon-theme-vscode",
+		"beardedbear.beardedicons",
+		"coenraads.bracket-pair-colorizer",
+	],
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	"forwardPorts": [9000],
+
+	// Use 'portsAttributes' to set default properties for specific forwarded ports. More info: https://code.visualstudio.com/docs/remote/devcontainerjson-reference.
+	"portsAttributes": {
+		"9000": {
+			"label": "Hello Remote World",
+			"onAutoForward": "notify"
+		}
+	},
+
+	// Use 'otherPortsAttributes' to configure any ports that aren't configured using 'portsAttributes'.
+	// "otherPortsAttributes": {
+	// 		"onAutoForward": "silent"
+	// },
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "go version",
+
+	// Uncomment to connect as a non-root user. More info: https://aka.ms/vscode-remote/containers/non-root.
+	"remoteUser": "vscode"
+}
