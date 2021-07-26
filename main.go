@@ -1,7 +1,8 @@
 package main
 
-import "fmt"
+import "github.com/rogerpoliver/ebanx-api/server"
 
 func main() {
-	fmt.Print("Hello World")
+	server := server.CreateServer()
+	server.StartServer()
 }

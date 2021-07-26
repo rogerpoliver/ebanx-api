@@ -10,7 +10,7 @@
 			"NODE_VERSION": "lts/*"
 		}
 	},
-	"runArgs": ["--name=EBANX-GoLang", "--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined" ],
+	"runArgs": ["--name=EBANX-GoLang", "--privileged=true", "--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined" ],
 
 	// Set *default* container specific settings.json values on container create.
 	"settings": { 

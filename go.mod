@@ -1,4 +1,4 @@
-module github.com/rogerpolvr/ebanx-api
+module github.com/rogerpoliver/ebanx-api
 
 go 1.16
 
