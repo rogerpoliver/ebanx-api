@@ -8,10 +8,9 @@ import (
 func ConfigRoutes(router *gin.Engine) *gin.Engine {
 	main := router.Group("/api/v1")
 	{
-		teste := main.Group("teste")
-		{
-			teste.GET("/", controllers.ShowTeste)
-		}
+		main.GET("/balance", controllers.GetBalance)
+		main.POST("/event", controllers.PostEvent)
+		main.POST("/reset", controllers.ResetData)
 	}
 	return router
 }
